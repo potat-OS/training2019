@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yb.dao.DraftMapper">
+
+    <insert id="insert" parameterType="Draft">
+        INSERT INTO draft(stu_id, name, department, classname, words, create_time)
+        VALUES (#{stu_id}, #{name}, #{department}, #{classname}, #{words}, now())
+    </insert>
+
+    <update id="updateState" parameterType="int">
+        UPDATE draft
+        SET state='已读'
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryAll" resultType="Draft">
+        SELECT id, name, department, classname, create_time, state
+        FROM draft
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="queryNotRead" resultType="Draft">
+        SELECT id,
+               stu_id,
+               name,
+               department,
+               classname,
+               words,
+               create_time,
+               state
+        FROM draft
+        WHERE state != '已读'
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="query" parameterType="int" resultType="Draft">
+        SELECT id,
+               stu_id,
+               name,
+               department,
+               classname,
+               words,
+               create_time,
+               state
+        FROM draft
+        WHERE id = #{id}
+    </select>
+
+    <select id="count" resultType="Count">
+        SELECT department, COUNT(department) AS countnum
+        FROM draft
+        GROUP BY department
+        ORDER BY COUNT(department) DESC
+    </select>
+
+</mapper>

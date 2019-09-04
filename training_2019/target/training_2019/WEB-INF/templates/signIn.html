@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>signIn</title>
+    <style>
+        body {
+            min-height: 100%;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            font-family: "Microsoft YaHei UI", monospace;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 class="lead">输入学号以进行下一步操作</h2>
+    <hr>
+    <form action="signIn">
+        <div class="container">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">学号</span>
+                </div>
+                <input type="text" class="form-control" name="stuId" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">登录</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>textList</title>
+    <style>
+        body {
+            min-height: 100%;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            font-family: "Microsoft YaHei UI", monospace;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not isNotRead}" align="center" class="btn-group">
+        <a href="reader/count" type="button" class="btn btn-primary">各院系提交统计</a>
+    </div>
+    <hr>
+    <div class="table">
+        <table class="table table-hover table-striped table-bordered">
+            <thead>
+            <tr>
+                <td>状态</td>
+                <td>上传时间</td>
+                <td>院系</td>
+                <td>姓名</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="draft : ${drafts.list}">
+                <td th:text="${draft.state}">sss</td>
+                <td th:text="${draft.create_time}">sss</td>
+                <td th:text="${draft.department}">sss</td>
+                <td th:text="${draft.name}">sss</td>
+                <td><a th:href="@{reader/{id}(id=${draft.id})}">查看</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div align="center">
+
+    <ul class="pagination pagination-lg justify-content-center">
+        <li class="page-item">
+            <a class="page-link" th:if="${not isFirstPage}"
+               th:href="@{${reader}(pageNum=${pageNum - 1},pageSize=${pageSize})}"
+               aria-label="Previous">
+                <span>&laquo;</span>
+            </a>
+            <a class="page-link disabled" th:if="${isFirstPage}">
+                <span>&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item" th:each="pageNo : ${#numbers.sequence(1,totalPages)}">
+            <a class="page-link disabled" th:if="${pageNum eq pageNo}">
+                <span th:text="${pageNo}"></span>
+            </a>
+            <a class="page-link" th:if="${not (pageNum eq pageNo)}"
+               th:href="@{${reader}(pageNum=${pageNo},pageSize=${pageSize})}">
+                <span th:text="${pageNo}"></span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" th:if="${not isLastPage}"
+               th:href="@{${reader}(pageNum=${pageNum + 1},pageSize=${pageSize})}"
+               aria-label="Next">
+                <span>&raquo;</span>
+            </a>
+            <a class="page-link disabled" th:if="${isLastPage}">
+                <span>&raquo;</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

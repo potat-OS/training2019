@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yb.dao.StuMapper">
+
+    <insert id="insert" parameterType="Student">
+        INSERT INTO training_2019(stu_id, name, department, classname)
+        VALUES (#{stu_id}, #{name}, #{department}, #{classname})
+    </insert>
+
+    <select id="query" parameterType="java.lang.String" resultType="Student">
+        SELECT stu_id, name, department, classname FROM training_2019 WHERE stu_id=#{stu_id}
+    </select>
+
+</mapper>

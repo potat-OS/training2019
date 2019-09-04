@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>write</title>
+    <style>
+        body {
+            min-height: 100%;
+            font-family: "Microsoft YaHei UI", monospace;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <hr>
+    <form action="write">
+        <div class="form-group">
+            <label for="text"></label>
+            <textarea style="font-size: xx-large" class="form-control input-large" id="text" name="words"
+                      rows="14" placeholder="限定500字以内" required></textarea>
+        </div>
+        <button class="btn btn-primary btn-block btn-lg" type="submit">提交</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</body>
+</html>
